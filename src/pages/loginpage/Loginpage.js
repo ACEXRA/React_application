@@ -12,14 +12,17 @@ const Loginpage = () => {
     history.push("/home");
   };
   return (
-    <form onSubmit={submitHandler}>
-      <label>Username</label>
-      <input />
-      <label>Password</label>
-      <input />
-      <br />
-      <button type="submit">Submit</button>
-    </form>
+    <div className="login">
+      <h2>Log in</h2>
+      <form onSubmit={submitHandler} className="form">
+        <input className="input" placeholder="username" />
+        <input className="input" placeholder="password" />
+        <br />
+        <button type="submit" className="custom_btn">
+          Submit
+        </button>
+      </form>
+    </div>
   );
 };
 export default Loginpage;

@@ -7,8 +7,26 @@
     justify-content: space-between;
     height: 5rem;
     align-items: center;
+    background-color: #7e708f;
     .logo {
       width: 20%;
+      color: #000;
+      font-size: 1.5rem;
+      z-index: 1;
+      span {
+        color: #fff;
+      }
+      span::after {
+        content: "";
+        background: blue;
+        position: absolute;
+        height: 40px;
+        width: 40px;
+        z-index: -1;
+        top: 1.3rem;
+        left: 2.7rem;
+        border-radius: 50%;
+      }
     }
     .navbar_items {
       width: 50%;
@@ -18,6 +36,83 @@
         display: flex;
         flex-direction: row;
         justify-content: space-around;
+        li {
+          a {
+            width: 6rem;
+            height: 3rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 500;
+            &:hover {
+              background-color: #50475a;
+              cursor: pointer;
+            }
+          }
+          .selected {
+            background-color: #50475a;
+          }
+        }
+      }
+      .logout_btn {
+        color: #fff;
+        font-weight: 700;
+        display: flex;
+        /* justify-content: center; */
+        align-items: center;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  .content {
+    // background-image: url("../images//background.jpg");
+    height: calc(100vh - 5rem);
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    img {
+      width: 100%;
+      height: calc(100vh - 5rem);
+      position: absolute;
+      z-index: -1;
+    }
+    .login {
+      display: flex;
+      flex-direction: column;
+      padding: 2rem 1.2rem;
+      background: #fff;
+      margin: 2rem 0;
+      border-radius: 10px;
+      width: 16rem;
+      .form {
+        display: flex;
+        flex-direction: column;
+        .input {
+          margin: 1rem 0;
+          padding: 0.5rem 1rem 0 0;
+          width: inherit;
+          border: 0;
+          border-bottom: 1px solid #d8d8d8;
+          outline: 0;
+          font-size: 1rem;
+        }
+        .custom_btn {
+          padding: 0.7rem;
+          background: #ccc;
+          border: none;
+          outline: 0;
+          font-size: 1rem;
+          border-radius: 5px;
+          &:hover {
+            cursor: pointer;
+          }
+        }
       }
     }
   }
