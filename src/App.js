@@ -1,17 +1,13 @@
 import React from "react";
-import Navbar from "./components/UI/Navbar";
-import Loginpage from "./pages/loginpage/Loginpage";
-import Userpage from "./pages/userpage/Userpage";
-import { Route, Switch } from "react-router-dom";
+import "./assets/scss/app.scss";
+import Navbar from "./components/ui/Navbar";
+import Content from "./components/content/Content";
 
 function App() {
   return (
-    <div>
+    <div className="main_layout">
       <Navbar />
-      <Switch>
-        <Route path="/login" component={Loginpage} />
-        <Route path="/user" component={Userpage} />
-      </Switch>
+      <Content />
     </div>
   );
 }

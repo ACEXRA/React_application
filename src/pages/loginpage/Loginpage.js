@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useHistory } from "react-router-dom";
+import { Usercontext } from "../../context/user-context";
 
 const Loginpage = () => {
+  const { setLoggedIn } = useContext(Usercontext);
+  const history = useHistory();
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    setLoggedIn(true);
+    history.push("/home");
+  };
   return (
-    <form>
+    <form onSubmit={submitHandler}>
       <label>Username</label>
       <input />
       <label>Password</label>
