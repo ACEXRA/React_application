@@ -13,18 +13,20 @@
       color: #000;
       font-size: 1.5rem;
       z-index: 1;
+      display: flex;
+      margin: 0 0 0 2rem;
       span {
         color: #fff;
       }
-      span::after {
+      span::before {
         content: "";
         background: blue;
         position: absolute;
         height: 40px;
         width: 40px;
         z-index: -1;
-        top: 1.3rem;
-        left: 2.7rem;
+        top: 1.4rem;
+        left: 1.3rem;
         border-radius: 50%;
       }
     }
@@ -62,7 +64,6 @@
         color: #fff;
         font-weight: 700;
         display: flex;
-        /* justify-content: center; */
         align-items: center;
         &:hover {
           cursor: pointer;
@@ -71,11 +72,10 @@
     }
   }
   .content {
-    // background-image: url("../images//background.jpg");
     height: calc(100vh - 5rem);
     display: flex;
     justify-content: center;
-    align-items: start;
+    align-items: center;
     img {
       width: 100%;
       height: calc(100vh - 5rem);
@@ -112,6 +112,73 @@
           &:hover {
             cursor: pointer;
           }
+        }
+      }
+    }
+    .homepage {
+      background-color: #fff;
+      height: 80%;
+      width: 80%;
+      border-radius: 10px;
+      z-index: 1;
+      .home_logo {
+        height: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+          height: 10rem;
+          width: 10rem;
+        }
+      }
+      .home_content {
+        height: 50%;
+        .creds {
+          margin: 1rem 0;
+          font-weight: 700;
+          span {
+            color: #8c8c8c;
+          }
+        }
+      }
+    }
+    .userpage {
+      background-color: #fff;
+      height: 80%;
+      width: 80%;
+      border-radius: 10px;
+      z-index: 1;
+      table {
+        width: 100%;
+        margin: 1rem 0;
+        border-collapse: collapse;
+        thead {
+          tr,
+          th {
+            width: 5rem;
+            text-align: left;
+            padding: 8px;
+          }
+        }
+        tbody {
+          tr:nth-child(even) {
+            background-color: #fff;
+          }
+          tr {
+            background-color: #dddddd;
+            td {
+              width: 5rem;
+              text-align: left;
+              padding: 8px;
+            }
+          }
+        }
+      }
+      .add_user_btn {
+        display: flex;
+        justify-content: end;
+        button {
+          margin: 1rem;
         }
       }
     }
