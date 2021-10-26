@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Usercontext } from "../../context/user-context";
 import Adduser from "../../components/modal/Adduser";
 
 const Userpage = () => {
   const { data } = useContext(Usercontext);
-  console.log(data);
+  const [modal, setModal] = useState(false);
   return (
     <>
       <div className="userpage">
@@ -20,7 +20,6 @@ const Userpage = () => {
           </thead>
           <tbody>
             {data.map((items) => {
-              console.log(items);
               return (
                 <tr key={items.id}>
                   <td>{items.id}</td>
@@ -34,10 +33,10 @@ const Userpage = () => {
           </tbody>
         </table>
         <div className="add_user_btn">
-          <button>Add user</button>
+          <button onClick={() => setModal(true)}>Add user</button>
         </div>
       </div>
-      <Adduser />
+      {modal && <Adduser setModal={setModal} />}
     </>
   );
 };
