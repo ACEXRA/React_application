@@ -8,7 +8,6 @@ import BG from "../../assets/images/background.jpg";
 
 const Content = () => {
   const { loggedIn } = useContext(Usercontext);
-  console.log(loggedIn);
   return (
     <div className="content">
       <img src={BG} alt="bg" />

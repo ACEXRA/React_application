@@ -1,17 +1,10 @@
 import React, { useState } from "react";
+import { initialData } from "../misc/DummyData";
 
 export const Usercontext = React.createContext();
 
 const UserContextProvider = (props) => {
-  const initial_arr = {
-    id: "0",
-    username: "Rasheed",
-    password: "12345",
-    role: "super-admin",
-    status: "active",
-  };
-
-  const [data, setData] = useState([initial_arr]);
+  const [data, setData] = useState(initialData);
   const [loggedIn, setLoggedIn] = useState(false);
   return (
     <Usercontext.Provider value={{ loggedIn, setLoggedIn, setData, data }}>
