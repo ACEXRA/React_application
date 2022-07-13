@@ -7,6 +7,7 @@ const Navbar = () => {
 
   const loginHandler = () => {
     setLoggedIn(false);
+    console.log("logged out");
   };
 
   return (

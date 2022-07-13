@@ -18,7 +18,7 @@ const Homepage = () => {
           <br />
           Username: <span>Rasheed</span>
           <br />
-          Password : <span>12345</span>
+          Password : <span>0000</span>
         </p>
       </div>
     </div>
