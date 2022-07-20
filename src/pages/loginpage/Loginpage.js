@@ -3,10 +3,12 @@ import { useHistory } from "react-router-dom";
 import { Usercontext } from "../../context/user-context";
 import VisibleIcon from "../../assets/images/see.png";
 import HiddenIcon from "../../assets/images/hidden.png";
+import Error from "../../components/modal/Error";
 
 const Loginpage = () => {
-  const { setLoggedIn, data } = useContext(Usercontext);
+  const { setLoggedIn, data, loggedIn } = useContext(Usercontext);
 
+  const [error, setError] = useState(false);
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [passwordType, setPasswordType] = useState("password");
@@ -34,14 +36,22 @@ const Loginpage = () => {
     data.map((item) => {
       if (username === item.userName && password === item.password) {
         setLoggedIn(true);
-        console.log("logged in");
+        setError(false);
+        history.push("/home");
+      } else {
+        setError(true);
       }
     });
-    history.push("/home");
   };
   return (
     <div className="login">
       <h2>Log in</h2>
+      <img
+        src={passwordType === "password" ? VisibleIcon : HiddenIcon}
+        onClick={visibleIconHandler}
+        className="visibleIcon"
+        alt=""
+      />
       <form onSubmit={submitHandler} className="form">
         <input
           className="input"
@@ -54,13 +64,7 @@ const Loginpage = () => {
           placeholder="password"
           onChange={passwordHandler}
         />
-        <img
-          src={passwordType === "password" ? VisibleIcon : HiddenIcon}
-          onClick={visibleIconHandler}
-          className="visibleIcon"
-          alt=""
-        />
-        <br />
+        {error && <Error message={"Username or Password is incorrect"} />}
         <button type="submit" className="custom_btn">
           Submit
         </button>
