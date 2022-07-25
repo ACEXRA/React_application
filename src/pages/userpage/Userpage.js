@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Usercontext } from "../../context/user-context";
 import Adduser from "../../components/modal/Adduser";
+import Button from "../../components/modal/Button";
 
 const Userpage = () => {
   const { data } = useContext(Usercontext);
@@ -35,9 +36,7 @@ const Userpage = () => {
             })}
           </tbody>
         </table>
-        <div className="add_user_btn">
-          <button onClick={() => setModal(true)}>Add user</button>
-        </div>
+        <Button name={"Add user"} eventHandler={() => setModal(true)} />
       </div>
       {modal && <Adduser setModal={setModal} />}
     </>

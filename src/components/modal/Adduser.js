@@ -114,7 +114,7 @@ const Adduser = ({ setModal }) => {
     <>
       <div onClick={() => setModal(false)} className="backdrop"></div>
       <div className="adduser">
-        <h4>Adduser</h4>
+        <h4 style={{ margin: "1rem" }}>Adduser</h4>
         <form onSubmit={submitHandler}>
           <div className="form_content">
             <label>Username :&nbsp;</label>
