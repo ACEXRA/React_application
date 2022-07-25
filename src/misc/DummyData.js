@@ -1,24 +1,24 @@
 const initialData = [
   {
     id: "0",
-    userName: "Rasheed",
+    username: "Rasheed",
     password: "0000",
+    role: "Sub Admin",
     status: "online",
-    card: "admin",
   },
   {
     id: "1",
-    userName: "Ahamed",
+    username: "Ahamed",
     password: "1111",
+    role: "Sub Admin",
     status: "offline",
-    card: "emp",
   },
   {
     id: "2",
-    userName: "Luffy",
+    username: "Luffy",
     password: "0000",
+    role: "admin",
     status: "online",
-    card: "emp",
   },
 ];
 export { initialData };

@@ -5,13 +5,14 @@ import Adduser from "../../components/modal/Adduser";
 const Userpage = () => {
   const { data } = useContext(Usercontext);
   const [modal, setModal] = useState(false);
+  // console.log(data);
   return (
     <>
       <div className="userpage">
         <table>
           <thead>
             <tr>
-              <th>Id</th>
+              <th style={{ width: "2rem", padding: "8px 8px 8px 15px" }}>Id</th>
               <th>Name</th>
               <th>Role</th>
               <th>Status</th>
@@ -22,7 +23,9 @@ const Userpage = () => {
             {data.map((items) => {
               return (
                 <tr key={items.id}>
-                  <td>{items.id}</td>
+                  <td style={{ width: "2rem", padding: "8px 8px 8px 15px" }}>
+                    {items.id}
+                  </td>
                   <td>{items.username}</td>
                   <td>{items.role}</td>
                   <td>{items.status}</td>

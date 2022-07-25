@@ -34,7 +34,7 @@ const Loginpage = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     data.map((item) => {
-      if (username === item.userName && password === item.password) {
+      if (username === item.username && password === item.password) {
         setLoggedIn(true);
         setError(false);
         history.push("/home");
