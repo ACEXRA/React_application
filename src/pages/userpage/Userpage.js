@@ -36,7 +36,9 @@ const Userpage = () => {
             })}
           </tbody>
         </table>
-        <Button name={"Add user"} eventHandler={() => setModal(true)} />
+        <div style={{ float: "right" }}>
+          <Button name={"Add user"} eventHandler={() => setModal(true)} />
+        </div>
       </div>
       {modal && <Adduser setModal={setModal} />}
     </>

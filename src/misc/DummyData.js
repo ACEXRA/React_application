@@ -11,7 +11,7 @@ const initialData = [
     username: "Ahamed",
     password: "1111",
     role: "Sub Admin",
-    status: "offline",
+    status: "Away",
   },
   {
     id: "2",

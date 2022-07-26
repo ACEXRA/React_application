@@ -40,3 +40,16 @@
   color: red;
   margin: 1rem 0;
 }
+.button {
+  background-color: #0ab4ff;
+  width: 5rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  color: white;
+  margin: 0 1rem;
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0 3px 10px -3px #0ab4ff;
+  }
+}

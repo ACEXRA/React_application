@@ -1,12 +1,16 @@
 import React from "react";
+import "../../assets/scss/modal.scss";
 
 const Button = (props) => {
   const clickHandler = (e) => {
-    console.log("click");
-    e();
+    if (e) {
+      e();
+    } else {
+      return null;
+    }
   };
   return (
-    <button onClick={() => clickHandler(props.eventHandler)}>
+    <button className="button" onClick={() => clickHandler(props.eventHandler)}>
       {props.name}
     </button>
   );

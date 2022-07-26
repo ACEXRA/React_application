@@ -1,6 +1,7 @@
 import React, { useRef, useState, useContext } from "react";
-import "../../assets/scss/modal.scss";
 import { Usercontext } from "../../context/user-context";
+import "../../assets/scss/modal.scss";
+import Button from "../modal/Button";
 
 const Adduser = ({ setModal }) => {
   const { setData, data } = useContext(Usercontext);
@@ -72,7 +73,6 @@ const Adduser = ({ setModal }) => {
   //submitting data
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log(statusRef.current.value);
     if (
       !nameRef.current.value ||
       !passRef.current.value ||
@@ -146,7 +146,8 @@ const Adduser = ({ setModal }) => {
             <select ref={roleRef} onChange={roleHandler}>
               <option value="">Select Role</option>
               <option value="Admin">Admin</option>
-              <option value="user">user</option>
+              <option value="Sub-Admin">Sub-Admin</option>
+              <option value="user">User</option>
             </select>
             {roleErr && <p className="error_message">Role is Required</p>}
           </div>
@@ -154,19 +155,13 @@ const Adduser = ({ setModal }) => {
             <label>Status :&nbsp;</label>
             <select ref={statusRef} onChange={statusHandler}>
               <option value="">Select Status</option>
-              <option value="Active">Active</option>
-              <option value="Inactive">Inactive</option>
+              <option value="Online">Online</option>
+              <option value="Away">Away</option>
             </select>
             {statusErr && <p className="error_message">Status is Required</p>}
           </div>
-          <button
-            style={{ margin: "0 1rem" }}
-            className="modal_btn"
-            onClick={() => setModal(false)}
-          >
-            Cancel
-          </button>
-          <button className="modal_btn">Add User</button>
+          <Button name={"Cancel"} eventHandler={() => setModal(false)} />
+          <Button name={"Add User"} />
         </form>
       </div>
     </>
