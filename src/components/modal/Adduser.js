@@ -2,6 +2,7 @@ import React, { useRef, useState, useContext } from "react";
 import { Usercontext } from "../../context/user-context";
 import "../../assets/scss/modal.scss";
 import Button from "../modal/Button";
+import Error from "../modal/Error";
 
 const Adduser = ({ setModal }) => {
   const { setData, data } = useContext(Usercontext);
@@ -15,14 +16,13 @@ const Adduser = ({ setModal }) => {
   const [usernameErr, setUsernameErr] = useState(false);
   const [passwordErr, setPassowrdErr] = useState(false);
   const [confirmPassErr, setConfirmPassErr] = useState(false);
-  const [roleErr, setRoleErr] = useState(false);
-  const [statusErr, setStatusErr] = useState(false);
+  const [passMatchErr, setPassmatchErr] = useState(false);
 
   //data Handling
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [role, setRole] = useState("");
-  const [status, setStatus] = useState("");
+  const [role, setRole] = useState("unset");
+  const [status, setStatus] = useState("unset");
 
   //onChange handling
   const usernameHandler = () => {
@@ -50,22 +50,22 @@ const Adduser = ({ setModal }) => {
     if (confirmPassRef.current.value) {
       setConfirmPassErr(false);
     }
+    if (confirmPassRef.current.value !== passRef.current.value) {
+      console.log("working");
+      setPassmatchErr(true);
+    }
+    if (confirmPassRef.current.value === passRef.current.value) {
+      console.log("working");
+      setPassmatchErr(false);
+    }
   };
   const roleHandler = () => {
-    if (!roleRef.current.value) {
-      setRoleErr(true);
-    }
     if (roleRef.current.value) {
-      setRoleErr(false);
       setRole(roleRef.current.value);
     }
   };
   const statusHandler = () => {
-    if (!statusRef.current.value) {
-      setStatusErr(true);
-    }
     if (statusRef.current.value) {
-      setStatusErr(false);
       setStatus(statusRef.current.value);
     }
   };
@@ -76,9 +76,7 @@ const Adduser = ({ setModal }) => {
     if (
       !nameRef.current.value ||
       !passRef.current.value ||
-      !confirmPassRef.current.value ||
-      !roleRef.current.value ||
-      !statusRef.current.value
+      !confirmPassRef.current.value
     ) {
       if (!nameRef.current.value) {
         setUsernameErr(true);
@@ -89,15 +87,6 @@ const Adduser = ({ setModal }) => {
       if (!confirmPassRef.current.value) {
         setConfirmPassErr(true);
       }
-      if (!statusRef.current.value) {
-        setStatusErr(true);
-      }
-      if (!roleRef.current.value) {
-        setRoleErr(true);
-      }
-      return;
-    }
-    if (usernameErr || passwordErr || confirmPassErr || roleErr || statusErr) {
       return;
     }
     const obj = {
@@ -115,53 +104,88 @@ const Adduser = ({ setModal }) => {
       <div onClick={() => setModal(false)} className="backdrop"></div>
       <div className="adduser">
         <h4 style={{ margin: "1rem" }}>Adduser</h4>
-        <form onSubmit={submitHandler}>
+        <form onSubmit={submitHandler} className="form">
           <div className="form_content">
-            <label>Username :&nbsp;</label>
-            <input type="string" ref={nameRef} onChange={usernameHandler} />
-            {usernameErr && (
-              <p className="error_message">Username is Required</p>
-            )}
+            <div className="form_label">
+              <label className="label">
+                Username<span style={{ color: "red" }}>*</span>
+              </label>
+              <label className="label">
+                Password<span style={{ color: "red" }}>*</span>
+              </label>
+              <label className="label">
+                Confirm Password<span style={{ color: "red" }}>*</span>
+              </label>
+              <label className="label">Role</label>
+              <label className="label">Status</label>
+            </div>
+            <div className="form_input">
+              <div>
+                <input type="text" ref={nameRef} onChange={usernameHandler} />
+                {usernameErr && (
+                  <Error
+                    style={{ margin: "0" }}
+                    message={"Username is required"}
+                  />
+                )}
+              </div>
+              <div>
+                <input
+                  type="password"
+                  ref={passRef}
+                  onChange={passwordHandler}
+                />
+                {passwordErr && (
+                  <Error
+                    style={{ margin: "0" }}
+                    message={"Password is required"}
+                  />
+                )}
+              </div>
+              <div>
+                <input
+                  type="password"
+                  ref={confirmPassRef}
+                  onChange={confimrPassHandler}
+                />
+                {confirmPassErr && (
+                  <Error
+                    style={{ margin: "0" }}
+                    message={"Confirm password is required"}
+                  />
+                )}
+                {passMatchErr && (
+                  <Error
+                    style={{ margin: "0" }}
+                    message={"Password doesn't match"}
+                  />
+                )}
+              </div>
+              <select ref={roleRef} onChange={roleHandler}>
+                <option value="unset" selected>
+                  Select Role
+                </option>
+                <option value="Admin">Admin</option>
+                <option value="Sub Admin">Sub Admin</option>
+                <option value="Member">Member</option>
+                <option value="Non-Member">Non-Member</option>
+              </select>
+              <select ref={statusRef} onChange={statusHandler}>
+                <option value="unset" selected>
+                  Select Status
+                </option>
+                <option value="Online">Online</option>
+                <option value="Away">Away</option>
+              </select>
+            </div>
+            <div style={{ display: "flex", fontSize: "0.7rem", color: "red" }}>
+              * marked are required field
+            </div>
           </div>
-          <div className="form_content">
-            <label>Password : &nbsp;</label>
-            <input type="password" ref={passRef} onChange={passwordHandler} />
-            {passwordErr && (
-              <p className="error_message">Password is Required</p>
-            )}
+          <div className="from_btn">
+            <Button name={"Cancel"} eventHandler={() => setModal(false)} />
+            <Button name={"Add User"} />
           </div>
-          <div className="form_content">
-            <label>Confirm Password : &nbsp;</label>
-            <input
-              type="password"
-              ref={confirmPassRef}
-              onChange={confimrPassHandler}
-            />
-            {confirmPassErr && (
-              <p className="error_message">Confirm Password is Required</p>
-            )}
-          </div>
-          <div className="form_content">
-            <label>Role :&nbsp;</label>
-            <select ref={roleRef} onChange={roleHandler}>
-              <option value="">Select Role</option>
-              <option value="Admin">Admin</option>
-              <option value="Sub-Admin">Sub-Admin</option>
-              <option value="user">User</option>
-            </select>
-            {roleErr && <p className="error_message">Role is Required</p>}
-          </div>
-          <div className="form_content">
-            <label>Status :&nbsp;</label>
-            <select ref={statusRef} onChange={statusHandler}>
-              <option value="">Select Status</option>
-              <option value="Online">Online</option>
-              <option value="Away">Away</option>
-            </select>
-            {statusErr && <p className="error_message">Status is Required</p>}
-          </div>
-          <Button name={"Cancel"} eventHandler={() => setModal(false)} />
-          <Button name={"Add User"} />
         </form>
       </div>
     </>

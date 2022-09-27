@@ -4,7 +4,9 @@ import "../../assets/scss/modal.scss";
 const Error = (props) => {
   return (
     <>
-      <div className="error">{props.message}</div>
+      <div style={props.style} className="error">
+        {props.message}
+      </div>
     </>
   );
 };
