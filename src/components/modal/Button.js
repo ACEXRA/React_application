@@ -10,7 +10,11 @@ const Button = (props) => {
     }
   };
   return (
-    <button className="button" onClick={() => clickHandler(props.eventHandler)}>
+    <button
+      style={props.style}
+      className="button"
+      onClick={() => clickHandler(props.eventHandler)}
+    >
       {props.name}
     </button>
   );

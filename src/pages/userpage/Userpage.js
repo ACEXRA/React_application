@@ -4,9 +4,16 @@ import Adduser from "../../components/modal/Adduser";
 import Button from "../../components/modal/Button";
 
 const Userpage = () => {
-  const { data } = useContext(Usercontext);
+  const { data, setData } = useContext(Usercontext);
   const [modal, setModal] = useState(false);
   // console.log(data);
+
+  const DeleteHandler = (item) => {
+    console.log(item.id);
+    const filteredData = data.filter((items) => items.id !== item.id);
+    console.log(filteredData);
+    setData(filteredData);
+  };
   return (
     <>
       <div className="userpage">
@@ -30,7 +37,13 @@ const Userpage = () => {
                   <td>{items.username}</td>
                   <td>{items.role}</td>
                   <td>{items.status}</td>
-                  <td></td>
+                  <td>
+                    <Button
+                      style={{ margin: "0" }}
+                      name={"Delete"}
+                      eventHandler={() => DeleteHandler(items)}
+                    />
+                  </td>
                 </tr>
               );
             })}

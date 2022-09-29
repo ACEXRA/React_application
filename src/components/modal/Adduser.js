@@ -51,11 +51,9 @@ const Adduser = ({ setModal }) => {
       setConfirmPassErr(false);
     }
     if (confirmPassRef.current.value !== passRef.current.value) {
-      console.log("working");
       setPassmatchErr(true);
     }
     if (confirmPassRef.current.value === passRef.current.value) {
-      console.log("working");
       setPassmatchErr(false);
     }
   };
@@ -161,19 +159,23 @@ const Adduser = ({ setModal }) => {
                   />
                 )}
               </div>
-              <select ref={roleRef} onChange={roleHandler}>
-                <option value="unset" selected>
-                  Select Role
-                </option>
+              <select
+                ref={roleRef}
+                onChange={roleHandler}
+                defaultValue={"unset"}
+              >
+                <option>Select Role</option>
                 <option value="Admin">Admin</option>
                 <option value="Sub Admin">Sub Admin</option>
                 <option value="Member">Member</option>
                 <option value="Non-Member">Non-Member</option>
               </select>
-              <select ref={statusRef} onChange={statusHandler}>
-                <option value="unset" selected>
-                  Select Status
-                </option>
+              <select
+                ref={statusRef}
+                onChange={statusHandler}
+                defaultValue={"unset"}
+              >
+                <option>Select Status</option>
                 <option value="Online">Online</option>
                 <option value="Away">Away</option>
               </select>
