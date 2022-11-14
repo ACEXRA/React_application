@@ -8,12 +8,15 @@ const Userpage = () => {
   const [modal, setModal] = useState(false);
   // console.log(data);
 
+  const EditHandler = (item) => {
+    console.log(item);
+    setModal(true);
+  };
   const DeleteHandler = (item) => {
-    console.log(item.id);
     const filteredData = data.filter((items) => items.id !== item.id);
-    console.log(filteredData);
     setData(filteredData);
   };
+
   return (
     <>
       <div className="userpage">
@@ -24,7 +27,8 @@ const Userpage = () => {
               <th>Name</th>
               <th>Role</th>
               <th>Status</th>
-              <th>Delte</th>
+              <th>Edit</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody>
@@ -37,6 +41,13 @@ const Userpage = () => {
                   <td>{items.username}</td>
                   <td>{items.role}</td>
                   <td>{items.status}</td>
+                  <td>
+                    <Button
+                      style={{ margin: "0" }}
+                      name={"Edit"}
+                      eventHandler={() => EditHandler(items)}
+                    />
+                  </td>
                   <td>
                     <Button
                       style={{ margin: "0" }}
@@ -53,7 +64,7 @@ const Userpage = () => {
           <Button name={"Add user"} eventHandler={() => setModal(true)} />
         </div>
       </div>
-      {modal && <Adduser setModal={setModal} />}
+      {modal && <Adduser name={"Add User"} setModal={setModal} />}
     </>
   );
 };

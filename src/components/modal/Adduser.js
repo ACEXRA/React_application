@@ -4,7 +4,7 @@ import "../../assets/scss/modal.scss";
 import Button from "../modal/Button";
 import Error from "../modal/Error";
 
-const Adduser = ({ setModal }) => {
+const Adduser = (props) => {
   const { setData, data } = useContext(Usercontext);
   const nameRef = useRef();
   const passRef = useRef();
@@ -95,13 +95,13 @@ const Adduser = ({ setModal }) => {
       status: status,
     };
     setData([...data, obj]);
-    setModal(false);
+    props.setModal(false);
   };
   return (
     <>
-      <div onClick={() => setModal(false)} className="backdrop"></div>
+      <div onClick={() => props.setModal(false)} className="backdrop"></div>
       <div className="adduser">
-        <h4 style={{ margin: "1rem" }}>Adduser</h4>
+        <h4 style={{ margin: "1rem" }}>{props.name}</h4>
         <form onSubmit={submitHandler} className="form">
           <div className="form_content">
             <div className="form_label">
@@ -185,7 +185,10 @@ const Adduser = ({ setModal }) => {
             </div>
           </div>
           <div className="from_btn">
-            <Button name={"Cancel"} eventHandler={() => setModal(false)} />
+            <Button
+              name={"Cancel"}
+              eventHandler={() => props.setModal(false)}
+            />
             <Button name={"Add User"} />
           </div>
         </form>
