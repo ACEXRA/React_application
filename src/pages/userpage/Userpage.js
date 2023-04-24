@@ -1,16 +1,21 @@
 import React, { useContext, useState } from "react";
 import { Usercontext } from "../../context/user-context";
+import UserModal from "../../components/modal/UserModal";
 import Adduser from "../../components/modal/Adduser";
 import Button from "../../components/modal/Button";
 
 const Userpage = () => {
   const { data, setData } = useContext(Usercontext);
   const [modal, setModal] = useState(false);
+  const [userModal, setUserModal] = useState(false);
+  const [edit, setEdit] = useState(false);
+  const [editData, setEditData] = useState(null);
   // console.log(data);
 
   const EditHandler = (item) => {
-    console.log(item);
-    setModal(true);
+    setUserModal(true);
+    setEdit(true);
+    setEditData(item);
   };
   const DeleteHandler = (item) => {
     const filteredData = data.filter((items) => items.id !== item.id);
@@ -65,6 +70,13 @@ const Userpage = () => {
         </div>
       </div>
       {modal && <Adduser name={"Add User"} setModal={setModal} />}
+      {userModal && (
+        <UserModal
+          name={edit ? "Edit User" : "Add User"}
+          setUserModal={setUserModal}
+          editData={editData}
+        />
+      )}
     </>
   );
 };
