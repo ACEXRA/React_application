@@ -183,5 +183,38 @@
         }
       }
     }
+    .markpage {
+      background-color: #fff;
+      height: 80%;
+      width: 65%;
+      border-radius: 10px;
+      z-index: 1;
+      table {
+        width: 100%;
+        margin: 1rem 0;
+        border-collapse: collapse;
+        thead {
+          tr,
+          th {
+            width: 5rem;
+            text-align: left;
+            padding: 8px;
+          }
+        }
+        tbody {
+          tr:nth-child(even) {
+            background-color: #fff;
+          }
+          tr {
+            background-color: #dddddd;
+            td {
+              width: 5rem;
+              text-align: left;
+              padding: 8px;
+            }
+          }
+        }
+      }
+    }
   }
 }

@@ -25,13 +25,11 @@ const Navbar = () => {
                 Home
               </NavLink>
             </li>
-            {userLogged.role !== "Student" && (
-              <li>
-                <NavLink to="/user" activeClassName="selected">
-                  UserPage
-                </NavLink>
-              </li>
-            )}
+            <li>
+              <NavLink to="/user" activeClassName="selected">
+                UserPage
+              </NavLink>
+            </li>
             <li onClick={loginHandler} className="logout_btn">
               Logout
             </li>

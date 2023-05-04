@@ -5,6 +5,7 @@ import Userpage from "../../pages/userpage/Userpage";
 import Homepage from "../../pages/homepage/Homepage";
 import { Usercontext } from "../../context/user-context";
 import BG from "../../assets/images/background.jpg";
+import Markpage from "../../pages/markpage/markpage";
 
 const Content = () => {
   const { loggedIn, userLogged } = useContext(Usercontext);
@@ -16,9 +17,10 @@ const Content = () => {
         {loggedIn && (
           <>
             <Route path="/home" component={Homepage} />
-            {userLogged.role !== "Student" && (
-              <Route path="/user" component={Userpage} />
-            )}
+            <Route
+              path="/user"
+              component={userLogged.role === "Student" ? Markpage : Userpage}
+            />
             <Route path="/">
               <Redirect to="/home" />
             </Route>
