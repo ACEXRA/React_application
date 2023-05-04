@@ -6,7 +6,7 @@ import HiddenIcon from "../../assets/images/hidden.png";
 import Error from "../../components/modal/Error";
 
 const Loginpage = () => {
-  const { setLoggedIn, data, loggedIn } = useContext(Usercontext);
+  const { setLoggedIn, data, setUserLogged } = useContext(Usercontext);
 
   const [error, setError] = useState(false);
   const [username, setUserName] = useState("");
@@ -37,6 +37,7 @@ const Loginpage = () => {
       if (username === item.username && password === item.password) {
         setLoggedIn(true);
         setError(false);
+        setUserLogged(item);
         history.push("/home");
       } else {
         setError(true);

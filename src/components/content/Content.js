@@ -7,7 +7,7 @@ import { Usercontext } from "../../context/user-context";
 import BG from "../../assets/images/background.jpg";
 
 const Content = () => {
-  const { loggedIn } = useContext(Usercontext);
+  const { loggedIn, userLogged } = useContext(Usercontext);
   return (
     <div className="content">
       <img src={BG} alt="bg" />
@@ -16,7 +16,9 @@ const Content = () => {
         {loggedIn && (
           <>
             <Route path="/home" component={Homepage} />
-            <Route path="/user" component={Userpage} />
+            {userLogged.role !== "Student" && (
+              <Route path="/user" component={Userpage} />
+            )}
             <Route path="/">
               <Redirect to="/home" />
             </Route>

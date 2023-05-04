@@ -97,7 +97,7 @@ const UserModel = (props) => {
     setData([...data, obj]);
     props.setModal(false);
   };
-  console.log(props.editData);
+  // console.log(props.editData);
   return (
     <>
       <div onClick={() => props.setModal(false)} className="backdrop"></div>

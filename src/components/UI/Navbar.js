@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { Usercontext } from "../../context/user-context";
 
 const Navbar = () => {
-  const { setLoggedIn, loggedIn } = useContext(Usercontext);
+  const { setLoggedIn, loggedIn, userLogged } = useContext(Usercontext);
 
   const loginHandler = () => {
     setLoggedIn(false);
@@ -25,11 +25,13 @@ const Navbar = () => {
                 Home
               </NavLink>
             </li>
-            <li>
-              <NavLink to="/user" activeClassName="selected">
-                User
-              </NavLink>
-            </li>
+            {userLogged.role !== "Student" && (
+              <li>
+                <NavLink to="/user" activeClassName="selected">
+                  UserPage
+                </NavLink>
+              </li>
+            )}
             <li onClick={loginHandler} className="logout_btn">
               Logout
             </li>

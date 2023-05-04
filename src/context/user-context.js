@@ -6,8 +6,18 @@ export const Usercontext = React.createContext();
 const UserContextProvider = (props) => {
   const [data, setData] = useState(initialData);
   const [loggedIn, setLoggedIn] = useState(false);
+  const [userLogged, setUserLogged] = useState({});
   return (
-    <Usercontext.Provider value={{ loggedIn, setLoggedIn, setData, data }}>
+    <Usercontext.Provider
+      value={{
+        loggedIn,
+        setLoggedIn,
+        setData,
+        data,
+        setUserLogged,
+        userLogged,
+      }}
+    >
       {props.children}
     </Usercontext.Provider>
   );
