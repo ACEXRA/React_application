@@ -5,7 +5,7 @@ const initialData = [
     password: "0000",
     role: "Master",
     status: "all Access",
-    dept: "none",
+    class: 0,
     place: "undefined",
   },
   {
@@ -14,8 +14,9 @@ const initialData = [
     password: "0001",
     role: "Student",
     status: "no acess",
-    dept: "Ece",
+    class: 11,
     place: "Chennai",
+    mark: [66, 77, 89, 89, 80, 33],
   },
   {
     id: "2",
@@ -23,8 +24,15 @@ const initialData = [
     password: "0002",
     role: "Teacher",
     status: "user access",
-    dept: "Ece",
+    Class: 11,
     place: "Kannyakumari",
+    semester: "06",
   },
 ];
+
+const subjectData = {
+  eleven: ["Sub1", "Sub2", "Sub3", "Sub4", "Sub5", "Sub6"],
+  twelve: ["Sub1", "Sub2", "Sub3", "Sub4", "Sub5", "Sub6", "Sub7"],
+};
+export { subjectData };
 export { initialData };

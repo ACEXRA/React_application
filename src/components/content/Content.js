@@ -5,7 +5,7 @@ import Userpage from "../../pages/userpage/Userpage";
 import Homepage from "../../pages/homepage/Homepage";
 import { Usercontext } from "../../context/user-context";
 import BG from "../../assets/images/background.jpg";
-import Markpage from "../../pages/markpage/markpage";
+import Markpage from "../../pages/markpage/Markpage";
 
 const Content = () => {
   const { loggedIn, userLogged } = useContext(Usercontext);
