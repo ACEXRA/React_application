@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
+import { Usercontext } from "../../context/user-context";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Loginpage from "../../pages/loginpage/Loginpage";
 import Userpage from "../../pages/userpage/Userpage";
 import Homepage from "../../pages/homepage/Homepage";
-import { Usercontext } from "../../context/user-context";
 import BG from "../../assets/images/background.jpg";
 import Markpage from "../../pages/markpage/Markpage";
 
